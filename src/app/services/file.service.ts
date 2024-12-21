@@ -40,6 +40,7 @@ export class FileService {
         path,
         directory
       });
+      console.log(result);
       return result.files.map(fileInfo => fileInfo.name);
     } catch (error) {
       console.error('Error reading directory:', error);

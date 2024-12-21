@@ -10,6 +10,7 @@ import { Directory } from '@capacitor/filesystem';
 export class FileViewerComponent implements OnInit {
   textFiles: string[] = [];
   imageFiles: string[] = [];
+  allFiles: string[] = [];
   selectedFileContent: string = '';
 
   constructor(private fileService: FileService) { }
@@ -73,6 +74,10 @@ export class FileViewerComponent implements OnInit {
     } catch (error) {
       console.error('Error downloading files:', error);
     }
+  }
+
+  async readDefDir() {
+    this.allFiles = await this.fileService.readDirectory("/home/student");
   }
 
   getImageUrl(fileName: string): string {
